@@ -88,11 +88,19 @@ void setup() {
 
 void loop() {
 
-  
+   
     if(SREF==0){ //Initialization state; everything is stopped (Coded E-STOP)
       
       }
     else if(SREF==1){ //Drilling
+      digitalWrite (DIR1, HIGH);//change from low to high if we need to change direction of motor
+      digitalWrite (DIR2, LOW);
+      analogWrite (DRILL, 255);
+       if (force>125){
+      digitalWrite (DIR1, HIGH);//change from low to high if we need to change direction of motor
+      digitalWrite (DIR2, LOW);
+      analogWrite (DRILL, 180);//changed speed of the motor
+    }
       
       }
     else if(SREF==2){//Heat Probe
